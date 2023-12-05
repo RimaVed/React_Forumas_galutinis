@@ -1,12 +1,18 @@
-# Getting Started  React App
+# Predėti projectą taip:
+a. Įsikelti į projektą turimus  node_modules paketus.
+b.Terminale pasirinkti GitBash ir komandomis ls ir cd nusinaviguoti į aplankalą React_forumas, po to į aplankalą forumas, kur yra projectas. Įvedę ls komandą turite matyti : node_modules/  package.json  package-lock.json  public/  README.md  src/.
+c.  Tada paleisti npm i komandą, kuri sužiūrės paketus.
 ### `npm i`
 
-## Available Scripts
+## Aplanke package.json, prie scripts nurodyti kur pasileis json serveris.
+"json": "json-server --watch ./src/data.json --port 8080"
 
-In the project directory, you can run:
+
+## Pirma pasileisti JSON serverį IR TIK po to  React aplikaciją
+json serveris pasileidžia su šia komanda:
 ### `npm run json`
-Runs JSON server wich react application uses to fetch and render data...
 
+## TIK json serverio paleidimo paleisti React su šia komanda:
 ### `npm start`
 
 Runs the app in the development mode.\
