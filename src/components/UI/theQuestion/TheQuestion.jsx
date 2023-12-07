@@ -49,7 +49,7 @@ const TheQuestion = ({ data }) => {
     <StyledTheQuestion>
       <h1>{data.title}</h1>
       <button>
-        <Link to={`${data.id}`}>Plačiau</Link>
+        <Link to={`/questions/${data.id}`}>Plačiau</Link>
       </button>
     </StyledTheQuestion>
   );

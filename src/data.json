@@ -43,7 +43,7 @@
   ],
   "questions": [
     {
-      "questionsId": 1,
+      "id": 1,
       "userId": 2,
       "title": "Pirmas sniegas šiemet ",
       "description": "Kada šiemet iškrito pirmas sniegas šiemet?",
@@ -52,7 +52,7 @@
       "edited": false
     },
     {
-      "questionsId": 2,
+      "id": 2,
       "userId": 1,
       "title": "Žiemos pramogos",
       "description": "Kokios saugiausios žiemos pramogos",
@@ -61,7 +61,7 @@
       "edited": false
     },
     {
-      "questionsId": 3,
+      "id": 3,
       "userId": 2,
       "title": "Sniegas ir gamta",
       "description": "Kaip senas sniegas veikia gamtą",
@@ -72,7 +72,7 @@
   ],
   "answers": [
     {
-      "answerId": 1,
+      "id": 1,
       "questionId": 1,
       "userId": 3,
       "answer": "Lapkričio pabaigoje iškrito pirmas sniegas šiemet?",
@@ -81,7 +81,7 @@
       "edited": false
     },
     {
-      "answerId": 2,
+      "id": 2,
       "questionId": 2,
       "userId": 3,
       "answer": "Pradėkime nuo slidinėjimo. Slidinėjimas yra puiki pramoga, bet pasirūpinkime tinkama apsauga - šalmais ir saugos diržais. Šiltesniame namuose, organizuojant šeimos kino vakarlius ar kepimo sesijas, saugiai leisti galima šaltą vakarą. ",
@@ -90,7 +90,7 @@
       "edited": false
     },
     {
-      "answerId": 3,
+      "id": 3,
       "questionId": 3,
       "userId": 4,
       "answer": "Sniegas, kaip natūralus izoliatorius, svarbiai veikia žemę, apsaugotas nuo šalčio ir išlaikymo stabilių augalų šaknų temperatūros lygio. Kai sniegas tirpsta, jis tampa svarbiu vandens šaltiniu, stebinčiu prie upių, ežerų ir dirvožemio drėkinimo. Sniegas taip pat yra gyvūnams naudinga izoliacinė priemonė, suteikianti šilumos ir apsaugant nuo šalčio. Jo įtaka ekosistemai taip pat gali lemti augalų ir gyvūnų prisitaikymą prie kintančių sąlygų.",

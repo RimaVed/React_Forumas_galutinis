@@ -1,4 +1,4 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import QuestionsContext from "../../../contexts/QuestionsContext";
 import styled from "styled-components";
@@ -45,21 +45,27 @@ const SpecQuestionStyled = styled.section`
 `;
 
 const SpecQuestion = () => {
-  const { questionsId } = useParams();
-  const { questions, setQuestions, QuestionsActionTypes } =
-    useContext(QuestionsContext);
+  const { questions, setQuestions } = useContext(QuestionsContext);
+  const { id } = useParams();
+  console.log("ID from useParams:", id);
+
   const navigate = useNavigate();
   const [myQuestion, setMyQuestion] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:8080/questions/${questionsId}`)
+    console.log("Effect is running!");
+    fetch(`http://localhost:8080/questions/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (!data.title) {
           navigate("/questions");
+        } else {
+          setMyQuestion(data);
         }
-        setMyQuestion(data);
+      })
+      .catch((error) => {
+        console.error("Klaida gaunant klausimą", error);
       });
-  }, []);
+  }, [id, navigate]);
 
   return (
     <SpecQuestionStyled>
@@ -70,7 +76,7 @@ const SpecQuestion = () => {
             <p>{myQuestion.description}</p>
           </div>
           <div>
-            <span> question date: {myQuestion.registerDate}</span>
+            <span> Question date: {myQuestion.registerDate}</span>
           </div>
           <Link to="/questions" className="back">
             <button>Back to Questions</button>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledHeader = styled.header`
@@ -46,8 +46,32 @@ const StyledHeader = styled.header`
       }
     }
   }
-`;
 
+  > div:last-child {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+
+    > button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #2980b9;
+      }
+
+      > a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+  }
+`;
 const Header = () => {
   return (
     <StyledHeader>
@@ -68,6 +92,14 @@ const Header = () => {
           </li>
         </ul>
       </nav>
+      <div>
+        <button>
+          <NavLink to="/signin">SignIn</NavLink>
+        </button>
+        <button>
+          <NavLink to="/signup">SignUp</NavLink>
+        </button>
+      </div>
     </StyledHeader>
   );
 };

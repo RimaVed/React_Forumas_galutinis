@@ -17,8 +17,12 @@ function App() {
         <Route path="/questions">
           <Route index element={<Questions />} />
           <Route path="thequestion/:id" element={<TheQuestion />} />
-          <Route path=":questionsId" element={<SpecQuestion />} />
+          <Route path=":id" element={<SpecQuestion />} />
         </Route>
+        {/* <Route path="/users">
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Route> */}
       </Routes>
       <Footer />
     </>
