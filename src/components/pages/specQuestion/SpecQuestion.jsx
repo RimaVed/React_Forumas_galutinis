@@ -1,10 +1,12 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import QuestionsContext from "../../../contexts/QuestionsContext";
+import Answers from "./answers/Answers";
 import styled from "styled-components";
 
 const SpecQuestionStyled = styled.section`
-  max-width: 600px;
+  max-width: 800px;
+  height: 600px;
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -17,6 +19,7 @@ const SpecQuestionStyled = styled.section`
 
   p {
     margin-bottom: 20px;
+    font-size: 20px;
   }
 
   span {
@@ -37,32 +40,75 @@ const SpecQuestionStyled = styled.section`
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+  }
 
-    &:hover {
-      background-color: #0056b3;
-    }
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  button.edit {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button.edit:hover {
+    background-color: #2ecc71;
+  }
+
+  button.delete {
+    background-color: #ff4444;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button.delete:hover {
+    background-color: #d63031;
   }
 `;
 
 const SpecQuestion = () => {
-  const { questionsId } = useParams();
-  const { questions, setQuestions, QuestionsActionTypes } =
-    useContext(QuestionsContext);
+  const { id } = useParams();
   const navigate = useNavigate();
   const [myQuestion, setMyQuestion] = useState({});
+  const [user, setUser] = useState({});
+
   useEffect(() => {
-    fetch(`http://localhost:8080/questions/${questionsId}`)
+    fetch(`http://localhost:8080/questions/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (!data.title) {
           navigate("/questions");
+        } else {
+          setMyQuestion(data);
         }
-        setMyQuestion(data);
+      })
+      .catch((error) => {
+        console.error("Klaida gaunant klausimą", error);
       });
-  }, []);
+
+    if (myQuestion.userId) {
+      fetch(`http://localhost:8080/users/${myQuestion.userId}`)
+        .then((res) => res.json())
+        .then((userData) => {
+          setUser(userData);
+        })
+        .catch((error) => {
+          console.error("Klaida gaunant vartotojo informaciją", error);
+        });
+    }
+  }, [id, navigate, myQuestion.userId]);
 
   return (
     <SpecQuestionStyled>
+      <button className="edit">Edit Question</button>
+      <button className="delete">Delete Question</button>
       {myQuestion && (
         <>
           <h1>{myQuestion.title}</h1>
@@ -70,7 +116,13 @@ const SpecQuestion = () => {
             <p>{myQuestion.description}</p>
           </div>
           <div>
-            <span> question date: {myQuestion.registerDate}</span>
+            <span> Question date: {myQuestion.registerDate}</span>
+          </div>
+          <div>
+            <span> Author: {user.userName}</span>
+          </div>
+          <div>
+            <Answers questionId={id} />
           </div>
           <Link to="/questions" className="back">
             <button>Back to Questions</button>
