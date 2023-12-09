@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Answers from "../../answers/Answers";
 import styled from "styled-components";
 
 const StyledTheQuestion = styled.div`
@@ -48,6 +49,7 @@ const TheQuestion = ({ data }) => {
   return (
     <StyledTheQuestion>
       <h1>{data.title}</h1>
+      <Answers questionId={data.id} />
       <button>
         <Link to={`/questions/${data.id}`}>Plačiau</Link>
       </button>

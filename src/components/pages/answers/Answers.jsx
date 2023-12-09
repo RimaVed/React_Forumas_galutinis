@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import AnswersContext from "./../../../contexts/AnswersContext";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -26,7 +26,7 @@ const Answers = () => {
   const { id } = useParams();
   const { answers, setAnswers } = useContext(AnswersContext);
   useEffect(() => {
-    fetch(`http://localhost:8080/answers?questionId=${questionId}`)
+    fetch(`http://localhost:8080/answers?questionId=${id}`)
       .then((res) => res.json())
       .then((data) => {
         setAnswers(data);
@@ -34,7 +34,7 @@ const Answers = () => {
       .catch((error) => {
         console.error("Klaida gaunant atsakymus", error);
       });
-  }, [questionId, setAnswers]);
+  }, [id, setAnswers]);
   return (
     <AnswersStyled>
       <h2>Answers</h2>

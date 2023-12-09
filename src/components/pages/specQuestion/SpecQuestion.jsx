@@ -2,7 +2,6 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import QuestionsContext from "../../../contexts/QuestionsContext";
 import Answers from "./answers/Answers";
-import AnswersContext from "../../../contexts/AnswersContext";
 import styled from "styled-components";
 
 const SpecQuestionStyled = styled.section`
@@ -42,9 +41,11 @@ const SpecQuestionStyled = styled.section`
     cursor: pointer;
     transition: background-color 0.3s;
   }
+
   button:hover {
     background-color: #0056b3;
   }
+
   button.edit {
     background-color: #4caf50;
     color: #fff;
@@ -73,13 +74,12 @@ const SpecQuestionStyled = styled.section`
 `;
 
 const SpecQuestion = () => {
-  const { questions, setQuestions } = useContext(QuestionsContext);
   const { id } = useParams();
-  const { answers, setAnswers } = useContext(AnswersContext);
   const navigate = useNavigate();
   const [myQuestion, setMyQuestion] = useState({});
+  const [user, setUser] = useState({});
+
   useEffect(() => {
-    console.log("Effect is running!");
     fetch(`http://localhost:8080/questions/${id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -92,11 +92,22 @@ const SpecQuestion = () => {
       .catch((error) => {
         console.error("Klaida gaunant klausimą", error);
       });
-  }, [id, navigate]);
+
+    if (myQuestion.userId) {
+      fetch(`http://localhost:8080/users/${myQuestion.userId}`)
+        .then((res) => res.json())
+        .then((userData) => {
+          setUser(userData);
+        })
+        .catch((error) => {
+          console.error("Klaida gaunant vartotojo informaciją", error);
+        });
+    }
+  }, [id, navigate, myQuestion.userId]);
 
   return (
     <SpecQuestionStyled>
-      <button className="edit">Edit Question </button>
+      <button className="edit">Edit Question</button>
       <button className="delete">Delete Question</button>
       {myQuestion && (
         <>
@@ -108,12 +119,10 @@ const SpecQuestion = () => {
             <span> Question date: {myQuestion.registerDate}</span>
           </div>
           <div>
-            <Answers questionId={id} />
+            <span> Author: {user.userName}</span>
           </div>
-
-          {/*  AnswerForm komponentą su questionId prop */}
           <div>
-            <AnswerForm questionId={id} />
+            <Answers questionId={id} />
           </div>
           <Link to="/questions" className="back">
             <button>Back to Questions</button>
