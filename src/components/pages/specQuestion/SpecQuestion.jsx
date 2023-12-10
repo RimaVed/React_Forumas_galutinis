@@ -74,7 +74,9 @@ const SpecQuestionStyled = styled.section`
 `;
 
 const SpecQuestion = () => {
-  const { id } = useParams();
+  const { questionsId } = useParams();
+  const { questions, setQuestions, QuestionsActionTypes } =
+    useContext(QuestionsContext);
   const navigate = useNavigate();
   const [myQuestion, setMyQuestion] = useState({});
   const [user, setUser] = useState({});
@@ -85,25 +87,10 @@ const SpecQuestion = () => {
       .then((data) => {
         if (!data.title) {
           navigate("/questions");
-        } else {
-          setMyQuestion(data);
         }
-      })
-      .catch((error) => {
-        console.error("Klaida gaunant klausimą", error);
+        setMyQuestion(data);
       });
-
-    if (myQuestion.userId) {
-      fetch(`http://localhost:8080/users/${myQuestion.userId}`)
-        .then((res) => res.json())
-        .then((userData) => {
-          setUser(userData);
-        })
-        .catch((error) => {
-          console.error("Klaida gaunant vartotojo informaciją", error);
-        });
-    }
-  }, [id, navigate, myQuestion.userId]);
+  }, []);
 
   return (
     <SpecQuestionStyled>
