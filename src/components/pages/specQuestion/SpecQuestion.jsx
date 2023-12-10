@@ -118,15 +118,10 @@ const SpecQuestion = () => {
           <div>
             <span> Question date: {myQuestion.registerDate}</span>
           </div>
-          <div>
-            <span> Author: {user.userName}</span>
-          </div>
-          <div>
-            <Answers questionId={id} />
-          </div>
           <Link to="/questions" className="back">
             <button>Back to Questions</button>
           </Link>
+          <Answers />
         </>
       )}
     </SpecQuestionStyled>
