@@ -45,13 +45,15 @@ const SpecQuestionStyled = styled.section`
 `;
 
 const SpecQuestion = () => {
-  const { questionsId } = useParams();
+  const { id } = useParams();
+  console.log(id);
+  console.log("Received id:", id);
   const { questions, setQuestions, QuestionsActionTypes } =
     useContext(QuestionsContext);
   const navigate = useNavigate();
   const [myQuestion, setMyQuestion] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:8080/questions/${questionsId}`)
+    fetch(`http://localhost:8080/questions/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (!data.title) {
@@ -59,7 +61,7 @@ const SpecQuestion = () => {
         }
         setMyQuestion(data);
       });
-  }, []);
+  }, [id, navigate]);
 
   return (
     <SpecQuestionStyled>
