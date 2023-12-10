@@ -5,6 +5,7 @@ import Questions from "./components/pages/questions/Questions";
 import TheQuestion from "./components/UI/theQuestion/TheQuestion";
 import Footer from "./components/UI/footer/Footer";
 import SpecQuestion from "./components/pages/specQuestion/SpecQuestion";
+import Answers from "./components/pages/answers/Answers";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -19,6 +20,13 @@ function App() {
           <Route path="thequestion/:id" element={<TheQuestion />} />
           <Route path=":id" element={<SpecQuestion />} />
         </Route>
+        <Route path="/answers">
+          <Route path="/answers/:id" element={<Answers />} />
+        </Route>
+        {/* <Route path="/users">
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Route> */}
       </Routes>
       <Footer />
     </>
