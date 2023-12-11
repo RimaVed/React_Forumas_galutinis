@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Answers from "../../answers/Answers";
+import Answers from "../../pages/answers/Answers";
 import styled from "styled-components";
 
 const StyledTheQuestion = styled.div`

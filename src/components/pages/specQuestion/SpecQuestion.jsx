@@ -1,7 +1,7 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import QuestionsContext from "../../../contexts/QuestionsContext";
-import Answers from "./answers/Answers";
+import Answers from "../answers/Answers";
 import styled from "styled-components";
 
 const SpecQuestionStyled = styled.section`
@@ -74,7 +74,7 @@ const SpecQuestionStyled = styled.section`
 `;
 
 const SpecQuestion = () => {
-  const { questionsId } = useParams();
+  const { id } = useParams();
   const { questions, setQuestions, QuestionsActionTypes } =
     useContext(QuestionsContext);
   const navigate = useNavigate();
