@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route index element={<Main />} />
 
-        <Route path="/questions">
+        <Route path="/questions/">
           <Route index element={<Questions />} />
           <Route path="thequestion/:id" element={<TheQuestion />} />
           <Route path=":id" element={<SpecQuestion />} />
