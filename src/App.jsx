@@ -7,6 +7,8 @@ import Footer from "./components/UI/footer/Footer";
 import SpecQuestion from "./components/pages/specQuestion/SpecQuestion";
 import Answers from "./components/pages/answers/Answers";
 import { Routes, Route } from "react-router-dom";
+import AddNewQuestion from "./components/pages/addNewQuestion/AddNewQuestion";
+import EditQuestion from "./components/pages/editQuestion/EditQuestion";
 
 function App() {
   return (
@@ -15,10 +17,12 @@ function App() {
       <Routes>
         <Route index element={<Main />} />
 
-        <Route path="/questions">
+        <Route path="/questions/">
           <Route index element={<Questions />} />
           <Route path="thequestion/:id" element={<TheQuestion />} />
           <Route path=":id" element={<SpecQuestion />} />
+          <Route path="addNewQuestion" element={<AddNewQuestion />} />
+          <Route path="edit/:id" element={<EditQuestion />} />
         </Route>
         <Route path="/answers">
           <Route path="/answers/:id" element={<Answers />} />
