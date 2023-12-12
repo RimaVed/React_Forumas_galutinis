@@ -1,18 +1,19 @@
 import { useFormik } from "formik";
-
 import * as Yup from "yup";
 import styled from "styled-components";
 import { v4 as uuid } from "uuid";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-// import FormikInput from "../../UI/input/FormikInput";
+import FormikInput from "../../UI/input/FormikInput";
 import QuestionsContext from "../../../contexts/QuestionsContext";
+
 const StyledAddFormPage = styled.div`
   max-width: 600px;
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  background-color: #fef9e7;
 
   h1 {
     font-size: 24px;
@@ -41,7 +42,7 @@ const StyledAddFormPage = styled.div`
 `;
 
 const AddNewQuestion = () => {
-  const { setQuestions, QuestionsActionTypes } = useContext();
+  const { setQuestions, QuestionsActionTypes } = useContext(QuestionsContext);
   const navigate = useNavigate();
   const values = {
     title: "",
@@ -51,12 +52,12 @@ const AddNewQuestion = () => {
 
   const validationSchema = Yup.object({
     title: Yup.string()
-      .min(15, "Minimum length 15 symbols")
+      .min(5, "Minimum length 5 symbols")
       .max(30, "Maximum length 30 symbols")
       .required("This field must be filled")
       .trim(),
     description: Yup.string()
-      .min(200, "Minimum length 200 symbols")
+      .min(10, "Minimum length 10 symbols")
       .required("This field must be filled")
       .trim(),
     releaseDate: Yup.date()
@@ -73,7 +74,7 @@ const AddNewQuestion = () => {
         // userId: loggedInUser.id,
         ...values
       };
-      setGames({
+      setQuestions({
         type: QuestionsActionTypes.add,
         data: finalValues
       });
@@ -88,7 +89,7 @@ const AddNewQuestion = () => {
         <FormikInput type="text" name="title" formik={formik} />
         <FormikInput type="text" name="description" formik={formik} />
         <FormikInput type="date" name="releaseDate" formik={formik} />
-        <button type="Submit">New Game Question</button>
+        <button type="Submit">New Question</button>
       </form>
     </StyledAddFormPage>
   );
