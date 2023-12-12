@@ -104,11 +104,16 @@ const SpecQuestion = () => {
   const questionAnswers = answers.filter(
     (answer) => answer.questionId === myQuestion.id
   );
-  console.log("Filtered Answers:", questionAnswers);
+  // console.log("Filtered Answers:", questionAnswers);
 
   return (
     <SpecQuestionStyled>
-      <button className="edit"> Edit Question</button>
+      <button
+        className="edit"
+        onClick={() => navigate(`/questions/edit/${id}`)}
+      >
+        Edit Question
+      </button>
 
       <button
         className="delete"

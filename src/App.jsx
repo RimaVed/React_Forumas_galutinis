@@ -8,6 +8,7 @@ import SpecQuestion from "./components/pages/specQuestion/SpecQuestion";
 import Answers from "./components/pages/answers/Answers";
 import { Routes, Route } from "react-router-dom";
 import AddNewQuestion from "./components/pages/addNewQuestion/AddNewQuestion";
+import EditQuestion from "./components/pages/editQuestion/EditQuestion";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="thequestion/:id" element={<TheQuestion />} />
           <Route path=":id" element={<SpecQuestion />} />
           <Route path="addNewQuestion" element={<AddNewQuestion />} />
+          <Route path="edit/:id" element={<EditQuestion />} />
         </Route>
         <Route path="/answers">
           <Route path="/answers/:id" element={<Answers />} />

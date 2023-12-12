@@ -50,16 +50,16 @@ const EditQuestion = () => {
         if (!data.name) {
           navigate("/");
         }
-        setFormValues({
-          ...data
-        });
       });
   }, [id, navigate]);
+  setFormValues({
+    ...data
+  });
 
   const validationSchema = Yup.object({
     title: Yup.string()
-      .min(15, "Minimum length 15 symbols")
-      .max(30, "Maximum length 30 symbols")
+      .min(5, "Minimum length 5 symbols")
+      .max(20, "Maximum length 20 symbols")
       .required("This field must be filled")
       .trim(),
     description: Yup.string()
