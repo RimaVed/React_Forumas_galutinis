@@ -96,7 +96,7 @@ const SpecQuestion = () => {
       .then((res) => res.json())
       .then((data) => {
         setAnswers(data); // Nustato gautus atsakymus į 'answers' state
-        console.log("All Answers:", data);
+        // console.log("All Answers:", data);
       });
   }, [id, navigate]);
 
