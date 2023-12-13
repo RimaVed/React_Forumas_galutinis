@@ -46,6 +46,7 @@ const SpecQuestionStyled = styled.section`
   button:hover {
     background-color: #0056b3;
   }
+  /* Question */
 
   button.edit {
     background-color: #4caf50;
@@ -72,12 +73,39 @@ const SpecQuestionStyled = styled.section`
   button.delete:hover {
     background-color: #d63031;
   }
+  /* Answer */
+
+  button.edit_answer {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button.edit_answer:hover {
+    background-color: #2ecc71;
+  }
+
+  button.delete_answer {
+    background-color: #ff4444;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button.delete_answer:hover {
+    background-color: #d63031;
+  }
 `;
 
 const SpecQuestion = () => {
   const { id } = useParams();
   const { setQuestions, QuestionsActionTypes } = useContext(QuestionsContext);
-  const { answers, setAnswers } = useContext(AnswersContext);
+  const [answers, setAnswers] = useState("");
   const navigate = useNavigate();
   const [myQuestion, setMyQuestion] = useState("");
   // const [myQuestion, setMyQuestion] = useState({});
@@ -95,15 +123,17 @@ const SpecQuestion = () => {
     fetch("http://localhost:8080/answers")
       .then((res) => res.json())
       .then((data) => {
-        setAnswers(data); // Nustato gautus atsakymus į 'answers' state
         console.log("All Answers:", data);
+        const atsakymai = data.filter((answer) => answer.questionId == id);
+        console.log(atsakymai);
+        setAnswers(atsakymai); // Nustato gautus atsakymus į 'answers' state
       });
   }, [id, navigate]);
 
   // Filtruoju atsakymus, palieku tik tuos, kurie priklauso tam tikram klausimui
-  const questionAnswers = answers.filter(
-    (answer) => answer.questionId === myQuestion.id
-  );
+  // const questionAnswers = answers.filter(
+  //   (answer) => answer.questionId === myQuestion.id
+  // );
   // console.log("Filtered Answers:", questionAnswers);
 
   return (
@@ -136,16 +166,22 @@ const SpecQuestion = () => {
           <Link to="/questions" className="back">
             <button>Back to Questions</button>
           </Link>
-          <Answers questionId={myQuestion.id} answers={questionAnswers} />
-          <div>
-            <ul>
-              {questionAnswers.map((answer) => (
-                <li key={answer.id}>
-                  <p>{answer.text}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
+
+          {answers && (
+            <div>
+              <ul>
+                {answers.map((answer) => (
+                  // <Answers questionId={myQuestion.id} answers={answer} />
+                  <li>
+                    <p>{answer.answer}</p>
+                  </li>
+                ))}
+              </ul>
+              <button className="edit_answer">Edit Answer</button>
+              <button className="delete_answer">Delete Answer</button>
+              <button className="add_answer">Add Answer</button>
+            </div>
+          )}
         </>
       )}
     </SpecQuestionStyled>

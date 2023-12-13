@@ -94,10 +94,10 @@ const Header = () => {
       </nav>
       <div>
         <button>
-          <NavLink to="/signin">SignIn</NavLink>
+          <NavLink to="/user/login">SignIn</NavLink>
         </button>
         <button>
-          <NavLink to="/signup">SignUp</NavLink>
+          <NavLink to="/user/register">SignUp</NavLink>
         </button>
       </div>
     </StyledHeader>
