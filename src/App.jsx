@@ -9,6 +9,8 @@ import Answers from "./components/pages/answers/Answers";
 import { Routes, Route } from "react-router-dom";
 import AddNewQuestion from "./components/pages/addNewQuestion/AddNewQuestion";
 import EditQuestion from "./components/pages/editQuestion/EditQuestion";
+import Login from "./components/pages/login/Login";
+import Register from "./components/pages/register/Register";
 
 function App() {
   return (
@@ -24,13 +26,14 @@ function App() {
           <Route path="addNewQuestion" element={<AddNewQuestion />} />
           <Route path="edit/:id" element={<EditQuestion />} />
         </Route>
-        <Route path="/answers">
-          <Route path="/answers/:id" element={<Answers />} />
-        </Route>
-        {/* <Route path="/users">
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+        {/* <Route path="/answers">
+        <Route path="/answers/:id" element={<Answers />} />
         </Route> */}
+        <Route path="/user">
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          {/*<Route path="page" element={<UserPage />} /> */}
+        </Route>
       </Routes>
       <Footer />
     </>
