@@ -29,7 +29,7 @@ const reducer = (state, action) => {
       return state.filter((el) => el.id.toString() !== action.id.toString());
     case AnswersActionTypes.edit:
       return state.map((el) => {
-        if (el.id.toString() === action.id.toString()) {
+        if (el.id.toString() == action.id.toString()) {
           fetch(`http://localhost:8080/answers/${action.id}`, {
             method: "PUT",
             headers: {
