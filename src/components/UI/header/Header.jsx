@@ -98,6 +98,7 @@ const Header = () => {
       </nav>
       {!loggedInUser ? (
         <div>
+          <div className="userInfo"></div>
           <button>
             <NavLink to="/user/login">SignIn</NavLink>
           </button>
@@ -107,7 +108,11 @@ const Header = () => {
         </div>
       ) : (
         <div>
-          <span>{loggedInUser.userName}</span>
+          <img
+            src={loggedInUser.profilePicture}
+            alt={loggedInUser.userName} // Atnaujinta - pakeista į loggedInUser.userName
+          />
+          <span>{loggedInUser.userName}</span> {/* Įdedama vartotojo vardas */}
           <button
             onClick={() => {
               setLoggedInUser("");

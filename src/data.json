@@ -39,17 +39,25 @@
       "age": 21,
       "registerDate": "2023-09-28",
       "profilePicture": "https://scalebranding.com/wp-content/uploads/2022/02/black-goat-01.jpg"
+    },
+    {
+      "id": "8409bf0d-ad47-475b-ab8e-d36b34b2c3fb",
+      "userName": "Baltasis vilkas ",
+      "email": "vilkas@gmail.com",
+      "password": "Vilkas/12",
+      "age": 24,
+      "registerDate": "2023-12-14",
+      "profilePicture": "https://scalebranding.com/wp-content/uploads/2022/02/wolf8.jpg"
     }
   ],
   "questions": [
     {
-      "id": 2,
-      "userId": 1,
-      "title": "Žiemos pramogos",
-      "description": "Kokios saugiausios žiemos pramogos",
       "registerDate": "2023-08-03",
-      "likes": 2,
-      "edited": false
+      "title": "Žiemos sportas",
+      "description": "Kokia žiemos sporto šaka populiariausia Lietuvoje?",
+      "edit": true,
+      "editDate": "2023-12-14",
+      "id": 2
     },
     {
       "id": 3,
@@ -72,6 +80,13 @@
       "title": " Kalėdinės dovanos",
       "description": "Kokia dovana per Kalėdas laukiamiausia?",
       "releaseDate": "2023-12-13"
+    },
+    {
+      "id": "5c6ec74a-f178-4ec8-a6ae-bbb165939b03",
+      "userId": "8409bf0d-ad47-475b-ab8e-d36b34b2c3fb",
+      "title": "Vilkų pavojus",
+      "description": "Kada vilkų anpuolis tikėtinas miške, vasarą ar žiemą?",
+      "releaseDate": "2023-12-14"
     }
   ],
   "answers": [

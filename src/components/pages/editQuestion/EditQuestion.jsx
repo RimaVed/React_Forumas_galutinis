@@ -40,7 +40,7 @@ const EditQuestion = () => {
   const [formValues, setFormValues] = useState({
     title: "",
     description: "",
-    releaseDate: ""
+    editDate: new Date().toISOString().split("T")[0]
   });
 
   useEffect(() => {
@@ -50,11 +50,11 @@ const EditQuestion = () => {
         if (!data.name) {
           navigate("/");
         }
+        setFormValues({
+          ...data
+        });
       });
-  }, [id, navigate]);
-  setFormValues({
-    ...data
-  });
+  }, [id]); // Užtikrina, kad useEffect bus paleistas kai keičiasi id
 
   const validationSchema = Yup.object({
     title: Yup.string()
@@ -63,38 +63,37 @@ const EditQuestion = () => {
       .required("This field must be filled")
       .trim(),
     description: Yup.string()
-      .min(200, "Minimum length 200 symbols")
+      .min(20, "Minimum length 20 symbols")
       .required("This field must be filled")
-      .trim(),
-    releaseDate: Yup.date()
-      .min(new Date(0).toISOString(), "Date must be after 1970-01-01")
-      .max(new Date().toISOString(), "Date must be before now")
-      .required("This field must be filled")
+      .trim()
   });
 
   return (
     <StyledEditFormPage>
       <h1>Edit Question</h1>
+      {/*  */}
       <Formik
         initialValues={formValues}
         validationSchema={validationSchema}
-        onSubmit={(values) => {
+        onSubmit={(values, actions) => {
           const finalValues = {
-            ...values
+            ...values,
+            edit: true,
+            editDate: new Date().toISOString().slice(0, 10)
           };
           setQuestions({
             type: QuestionsActionTypes.edit,
             id: id,
             data: finalValues
           });
-          navigate(`/questions/${id}`);
+          actions.resetForm(); // Išvalo formą po sėkmingo pateikimo
+          navigate(`/questions/${id}`, { replace: true });
         }}
       >
         {(props) => (
           <form onSubmit={props.handleSubmit}>
-            <FormikInput type="text" name="title" />
-            <FormikInput type="text" name="description" />
-            <FormikInput type="date" name="releaseDate" />
+            <FormikInput type="text" name="title" formik={props} />
+            <FormikInput type="text" name="description" formik={props} />
             <button type="submit">Edit Question</button>
           </form>
         )}

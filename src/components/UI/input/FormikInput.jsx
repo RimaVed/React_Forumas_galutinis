@@ -29,8 +29,8 @@ const FormikInput = ({ type, name, formik, placeholder }) => {
       </label>
       <input
         type={type}
-        name={name}
-        id={name}
+        name={name.toLowerCase()}
+        id={name.toLowerCase()}
         value={formik.values[name]}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}

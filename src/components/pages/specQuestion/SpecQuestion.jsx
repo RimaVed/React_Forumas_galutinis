@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import AnswersContext from "../../../contexts/AnswersContext";
 import QuestionsContext from "../../../contexts/QuestionsContext";
 import Answers from "../answers/Answers";
+import AddNewAnswer from "../addAnswer/AddAnswer";
 import UsersContext from "../../../contexts/UsersContext";
 import styled from "styled-components";
 
@@ -168,7 +169,7 @@ const SpecQuestion = () => {
             <p>{myQuestion.description}</p>
           </div>
           <div>
-            <span> Question date: {myQuestion.registerDate}</span>
+            <span> Question date: {myQuestion.releaseDate}</span>
           </div>
           <Link to="/questions" className="back">
             <button>Back to Questions</button>
@@ -178,15 +179,33 @@ const SpecQuestion = () => {
             <div>
               <ul>
                 {answers.map((answer) => (
-                  // <Answers questionId={myQuestion.id} answers={answer} />
-                  <li>
+                  <li key={answer.id}>
                     <p>{answer.answer}</p>
+                    {loggedInUser && loggedInUser.id === answer.userId && (
+                      <>
+                        <button className="edit_answer">Edit Answer</button>
+                        <button
+                          className="delete_answer"
+                          onClick={() => {
+                            setAnswers({
+                              type: AnswersActionTypes.remove, // Use AnswersActionTypes
+                              id: answer.id
+                            });
+                            navigate("/questions/");
+                          }}
+                        >
+                          Delete Answer
+                        </button>
+                      </>
+                    )}
                   </li>
                 ))}
               </ul>
-              <button className="edit_answer">Edit Answer</button>
-              <button className="delete_answer">Delete Answer</button>
-              <button className="add_answer">Add Answer</button>
+              {loggedInUser && (
+                <Link to={`/questions/add-answer/${id}`} className="add_answer">
+                  <button>Add Answer</button>
+                </Link>
+              )}
             </div>
           )}
         </>
