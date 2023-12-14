@@ -61,28 +61,20 @@
       "edited": false
     },
     {
-      "id": "def55d6d-18f4-4447-9d1d-7cbaeb197242",
-      "title": "slidus šaligatvis",
-      "description": "kuo geriau barstyti:pelenais, druska , smeliu",
-      "releaseDate": "2023-12-12"
-    },
-    {
       "id": "f1d5ff1d-ae76-4d0f-bd06-f383053c59c9",
       "title": "Šaltas vanduo",
       "description": "Kokios temperatūros yra šaltas vanduo?",
       "releaseDate": "2023-12-12"
+    },
+    {
+      "id": "3e406890-4fd7-41eb-a7fd-77c922f0964c",
+      "userId": 2,
+      "title": " Kalėdinės dovanos",
+      "description": "Kokia dovana per Kalėdas laukiamiausia?",
+      "releaseDate": "2023-12-13"
     }
   ],
   "answers": [
-    {
-      "id": 1,
-      "questionId": 1,
-      "userId": 3,
-      "answer": "Lapkričio pabaigoje iškrito pirmas sniegas šiemet?",
-      "registerDate": "2023-08-03",
-      "likes": 2,
-      "edited": false
-    },
     {
       "id": 2,
       "questionId": 2,
@@ -95,9 +87,18 @@
     {
       "id": 3,
       "questionId": 3,
-      "userId": 4,
+      "userId": 2,
       "answer": "Sniegas, kaip natūralus izoliatorius, svarbiai veikia žemę, apsaugotas nuo šalčio ir išlaikymo stabilių augalų šaknų temperatūros lygio. Kai sniegas tirpsta, jis tampa svarbiu vandens šaltiniu, stebinčiu prie upių, ežerų ir dirvožemio drėkinimo. Sniegas taip pat yra gyvūnams naudinga izoliacinė priemonė, suteikianti šilumos ir apsaugant nuo šalčio. Jo įtaka ekosistemai taip pat gali lemti augalų ir gyvūnų prisitaikymą prie kintančių sąlygų.",
       "registerDate": "2023-08-03",
+      "likes": 2,
+      "edited": false
+    },
+    {
+      "id": 4,
+      "questionId": "3e406890-4fd7-41eb-a7fd-77c922f0964c",
+      "userId": 4,
+      "answer": "Dovana, kuri suteiks įsimintinas patirtis. Tai gali būti spa procedūra, bilietas į renginį, restorano dovanų kuponas arba kelionė.",
+      "registerDate": "2023-12-14",
       "likes": 2,
       "edited": false
     }

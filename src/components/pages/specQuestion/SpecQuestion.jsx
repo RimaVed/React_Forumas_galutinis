@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import AnswersContext from "../../../contexts/AnswersContext";
 import QuestionsContext from "../../../contexts/QuestionsContext";
 import Answers from "../answers/Answers";
+import UsersContext from "../../../contexts/UsersContext";
 import styled from "styled-components";
 
 const SpecQuestionStyled = styled.section`
@@ -108,6 +109,7 @@ const SpecQuestion = () => {
   const [answers, setAnswers] = useState("");
   const navigate = useNavigate();
   const [myQuestion, setMyQuestion] = useState("");
+  const { loggedInUser } = useContext(UsersContext);
   // const [myQuestion, setMyQuestion] = useState({});
 
   useEffect(() => {
@@ -117,7 +119,7 @@ const SpecQuestion = () => {
         if (!data.title) {
           navigate("/questions");
         }
-        setMyQuestion(data);
+        setMyQuestion(data); //klausimo info ateina čia.
       });
     // Užklausama serverio dėl visų atsakymų
     fetch("http://localhost:8080/answers")
@@ -138,22 +140,27 @@ const SpecQuestion = () => {
 
   return (
     <SpecQuestionStyled>
-      <button
-        className="edit"
-        onClick={() => navigate(`/questions/edit/${id}`)}
-      >
-        Edit Question
-      </button>
+      {loggedInUser.id == myQuestion.userId && (
+        <>
+          <button
+            className="edit"
+            onClick={() => navigate(`/questions/edit/${id}`)}
+          >
+            Edit Question
+          </button>
 
-      <button
-        className="delete"
-        onClick={() => {
-          setQuestions({ type: QuestionsActionTypes.remove, id: id });
-          navigate("/questions/");
-        }}
-      >
-        Delete Question
-      </button>
+          <button
+            className="delete"
+            onClick={() => {
+              setQuestions({ type: QuestionsActionTypes.remove, id: id });
+              navigate("/questions/");
+            }}
+          >
+            Delete Question
+          </button>
+        </>
+      )}
+
       {myQuestion && (
         <>
           <h1>{myQuestion.title}</h1>

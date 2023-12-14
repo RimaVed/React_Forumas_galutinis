@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import QuestionsContext from "../../../contexts/QuestionsContext";
 import TheQuestion from "../../UI/theQuestion/TheQuestion";
+import UsersContext from "../../../contexts/UsersContext";
 import styled from "styled-components";
 
 const StyledQuestions = styled.section`
@@ -47,15 +48,19 @@ const StyledQuestions = styled.section`
 
 const Questions = () => {
   const { questions } = useContext(QuestionsContext);
+  const { loggedInUser } = useContext(UsersContext);
 
   // console.log(question);
 
   return (
     <StyledQuestions>
       <h1> Questions </h1>
-      <Link to="/questions/addNewQuestion">
-        <button className="add-question-button">AddNewQuestion</button>
-      </Link>
+      {loggedInUser && (
+        <Link to="/questions/addNewQuestion">
+          <button className="add-question-button">AddNewQuestion</button>
+        </Link>
+      )}
+
       <div>
         {questions.map((question) => {
           return <TheQuestion key={question.id} data={question} />;

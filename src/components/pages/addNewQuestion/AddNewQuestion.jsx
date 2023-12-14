@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import FormikInput from "../../UI/input/FormikInput";
 import QuestionsContext from "../../../contexts/QuestionsContext";
+import UsersContext from "../../../contexts/UsersContext";
 
 const StyledAddFormPage = styled.div`
   max-width: 600px;
@@ -43,11 +44,12 @@ const StyledAddFormPage = styled.div`
 
 const AddNewQuestion = () => {
   const { setQuestions, QuestionsActionTypes } = useContext(QuestionsContext);
+  const { loggedInUser } = useContext(UsersContext);
   const navigate = useNavigate();
   const values = {
     title: "",
     description: "",
-    releaseDate: ""
+    releaseDate: new Date().toISOString().split("T")[0]
   };
 
   const validationSchema = Yup.object({
@@ -59,11 +61,7 @@ const AddNewQuestion = () => {
     description: Yup.string()
       .min(10, "Minimum length 10 symbols")
       .required("This field must be filled")
-      .trim(),
-    releaseDate: Yup.date()
-      .min(new Date(0).toISOString(), "Date must be after 1970-01-01")
-      .max(new Date().toISOString(), "Date must be before now")
-      .required("This field must be filled")
+      .trim()
   });
   const formik = useFormik({
     initialValues: values,
@@ -71,7 +69,7 @@ const AddNewQuestion = () => {
     onSubmit: (values) => {
       const finalValues = {
         id: uuid(),
-        // userId: loggedInUser.id,
+        userId: loggedInUser.id,
         ...values
       };
       setQuestions({
@@ -88,7 +86,7 @@ const AddNewQuestion = () => {
       <form onSubmit={formik.handleSubmit}>
         <FormikInput type="text" name="title" formik={formik} />
         <FormikInput type="text" name="description" formik={formik} />
-        <FormikInput type="date" name="releaseDate" formik={formik} />
+        {/* <FormikInput type="date" name="releaseDate" formik={formik} /> */}
         <button type="Submit">New Question</button>
       </form>
     </StyledAddFormPage>
