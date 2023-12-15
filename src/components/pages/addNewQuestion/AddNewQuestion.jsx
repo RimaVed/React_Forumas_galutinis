@@ -86,7 +86,6 @@ const AddNewQuestion = () => {
       <form onSubmit={formik.handleSubmit}>
         <FormikInput type="text" name="title" formik={formik} />
         <FormikInput type="text" name="description" formik={formik} />
-        {/* <FormikInput type="date" name="releaseDate" formik={formik} /> */}
         <button type="Submit">New Question</button>
       </form>
     </StyledAddFormPage>
