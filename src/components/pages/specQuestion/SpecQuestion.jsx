@@ -107,6 +107,7 @@ const SpecQuestionStyled = styled.section`
 const SpecQuestion = () => {
   const { id } = useParams();
   const { setQuestions, QuestionsActionTypes } = useContext(QuestionsContext);
+  const { AnswersActionTypes } = useContext(AnswersContext);
   const [answers, setAnswers] = useState("");
   const navigate = useNavigate();
   const [myQuestion, setMyQuestion] = useState("");
@@ -128,16 +129,11 @@ const SpecQuestion = () => {
       .then((data) => {
         console.log("All Answers:", data);
         const atsakymai = data.filter((answer) => answer.questionId == id);
-        console.log(atsakymai);
+        console.log("Filtered Answers:", atsakymai);
         setAnswers(atsakymai); // Nustato gautus atsakymus į 'answers' state
       });
   }, [id, navigate]);
-
-  // Filtruoju atsakymus, palieku tik tuos, kurie priklauso tam tikram klausimui
-  // const questionAnswers = answers.filter(
-  //   (answer) => answer.questionId === myQuestion.id
-  // );
-  // console.log("Filtered Answers:", questionAnswers);
+  console.log("My Question:", myQuestion);
 
   return (
     <SpecQuestionStyled>
@@ -181,7 +177,7 @@ const SpecQuestion = () => {
                 {answers.map((answer) => (
                   <li key={answer.id}>
                     <p>{answer.answer}</p>
-                    {loggedInUser && loggedInUser.id === answer.userId && (
+                    {loggedInUser && loggedInUser.id == answer.userId && (
                       <>
                         <button className="edit_answer">Edit Answer</button>
                         <button
