@@ -48,6 +48,15 @@
       "age": 24,
       "registerDate": "2023-12-14",
       "profilePicture": "https://scalebranding.com/wp-content/uploads/2022/02/wolf8.jpg"
+    },
+    {
+      "id": "be8b10e0-b100-4a83-b7db-7b457600845c",
+      "userName": "Valtis",
+      "email": "valtis@gmail.com",
+      "password": "Valtis/21",
+      "age": 50,
+      "registerDate": "2023-12-15",
+      "profilePicture": "https://nuotraukos.mediakatalogas.lt/rsynced_images/boat-silhouette-symbol-logo.jpg"
     }
   ],
   "questions": [
@@ -95,6 +104,13 @@
       "title": "Žiemos sportas",
       "description": "Kokios populiariausios žiemos sporto šakos Lietuvoje?",
       "releaseDate": "2023-12-14"
+    },
+    {
+      "id": "362f4072-1762-46b0-91c1-7c843dd00e6a",
+      "userId": 1,
+      "title": "Žuvis po ledu",
+      "description": "Kada reikia daryti eketes, kad žuvis galėtų kvepuoti?",
+      "releaseDate": "2023-12-15"
     }
   ],
   "answers": [
@@ -160,6 +176,13 @@
       "answer": "sniegas yra puiki priemonė užsimaskuoyi gyvūnams",
       "releaseDate": "2023-12-15",
       "questionId": "3"
+    },
+    {
+      "id": "4d2212b7-5982-435d-9fe9-ecbf3af26671",
+      "userId": 1,
+      "answer": "kai ledo storis 10m",
+      "releaseDate": "2023-12-15",
+      "questionId": "362f4072-1762-46b0-91c1-7c843dd00e6a"
     }
   ]
 }
