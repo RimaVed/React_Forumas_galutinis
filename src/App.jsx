@@ -12,6 +12,7 @@ import AddNewQuestion from "./components/pages/addNewQuestion/AddNewQuestion";
 import EditQuestion from "./components/pages/editQuestion/EditQuestion";
 import Login from "./components/pages/login/Login";
 import Register from "./components/pages/register/Register";
+import UserPage from "./components/pages/userPage/UserPage";
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
         <Route path="/user">
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          {/*<Route path="page" element={<UserPage />} /> */}
+          <Route path="page" element={<UserPage />} />
         </Route>
       </Routes>
       <Footer />

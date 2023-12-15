@@ -2,7 +2,6 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useContext } from "react";
 import UsersContext from "../../../contexts/UsersContext";
-
 const StyledHeader = styled.header`
   padding: 0 20px;
   border-bottom: 3px solid black;
@@ -72,8 +71,25 @@ const StyledHeader = styled.header`
         color: inherit;
       }
     }
+
+    .userLink {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+
+      > img {
+        height: 40px; /* Pasirinktinai nustatykite nuotraukos aukštį */
+      }
+
+      > span {
+        font-size: 1.2rem; /* Pasirinktinai nustatykite vardo šrifto dydį */
+      }
+    }
   }
 `;
+
 const Header = () => {
   const { loggedInUser, setLoggedInUser } = useContext(UsersContext);
   const navigate = useNavigate();
@@ -98,7 +114,6 @@ const Header = () => {
       </nav>
       {!loggedInUser ? (
         <div>
-          <div className="userInfo"></div>
           <button>
             <NavLink to="/user/login">SignIn</NavLink>
           </button>
@@ -108,11 +123,15 @@ const Header = () => {
         </div>
       ) : (
         <div>
-          <img
-            src={loggedInUser.profilePicture}
-            alt={loggedInUser.userName} // Atnaujinta - pakeista į loggedInUser.userName
-          />
-          <span>{loggedInUser.userName}</span> {/* Įdedama vartotojo vardas */}
+          <Link to="/user/page" className="userLink">
+            <img
+              src={loggedInUser.profilePicture}
+              alt={loggedInUser.userName} // Atnaujinta - pakeista į loggedInUser.userName
+            />
+            <span>{loggedInUser.userName}</span>{" "}
+            {/* Įdedama vartotojo vardas */}
+          </Link>
+
           <button
             onClick={() => {
               setLoggedInUser("");
