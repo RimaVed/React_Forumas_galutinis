@@ -86,7 +86,7 @@ const EditQuestion = () => {
             id: id,
             data: finalValues
           });
-          actions.resetForm(); // Išvalo formą po sėkmingo pateikimo
+
           navigate(`/questions/${id}`, { replace: true });
         }}
       >

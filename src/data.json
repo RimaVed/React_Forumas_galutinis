@@ -57,6 +57,15 @@
       "age": 50,
       "registerDate": "2023-12-15",
       "profilePicture": "https://nuotraukos.mediakatalogas.lt/rsynced_images/boat-silhouette-symbol-logo.jpg"
+    },
+    {
+      "id": "7ff9c7d7-bcb5-4b45-9323-c627348ca538",
+      "userName": "Vadas",
+      "email": "vadas@gmail.com",
+      "password": "Ledas/21",
+      "age": 50,
+      "registerDate": "2023-12-15",
+      "profilePicture": "https://nuotraukos.mediakatalogas.lt/rsynced_images/boat-silhouette-symbol-logo.jpg"
     }
   ],
   "questions": [
@@ -114,15 +123,6 @@
     }
   ],
   "answers": [
-    {
-      "id": 1,
-      "questionId": 1,
-      "userId": 3,
-      "answer": "Lapkričio pabaigoje iškrito pirmas sniegas šiemet?",
-      "registerDate": "2023-08-03",
-      "likes": 2,
-      "edited": false
-    },
     {
       "id": 3,
       "questionId": 3,
@@ -183,6 +183,20 @@
       "answer": "kai ledo storis 10m",
       "releaseDate": "2023-12-15",
       "questionId": "362f4072-1762-46b0-91c1-7c843dd00e6a"
+    },
+    {
+      "id": "c1b5036a-e6f3-4e6c-ba7a-e969080f1145",
+      "userId": 1,
+      "answer": "gera dovana yra saldainiai.",
+      "releaseDate": "2023-12-15",
+      "questionId": "3e406890-4fd7-41eb-a7fd-77c922f0964c"
+    },
+    {
+      "id": "ac1fb823-d6f5-4a0d-a897-7ba66216e83f",
+      "userId": "7ff9c7d7-bcb5-4b45-9323-c627348ca538",
+      "answer": "ledo ritulys",
+      "releaseDate": "2023-12-15",
+      "questionId": "2"
     }
   ]
 }
